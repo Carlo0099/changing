@@ -1,0 +1,2577 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="./css/normalize.css" type="text/css">
+    <style>
+        html,
+        body {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        body {
+            width: 100%;
+        }
+
+        #header-top {
+            width: 100%;
+            min-width: 1200px;
+            height: 30px;
+            background-color: #EAEAEA;
+            font: 12px/1.3 "Microsoft YaHei", Tahoma, Helvetica, Arial, "\5b8b\4f53", sans-serif;
+        }
+
+        #header-top ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        #header-top a {
+            color: #333;
+            text-decoration: none;
+        }
+
+        #header-top a:hover {
+            color: #E1251B;
+        }
+
+        /*.header开始*/
+        .header {
+            width: 1200px;
+            /* border: 1px solid black; */
+            margin: 0 auto;
+        }
+
+        .header-top-l {
+            float: left;
+            height: 30px;
+            line-height: 30px;
+
+        }
+
+        .header-top-l li {
+            list-style-type: none;
+            display: inline-block;
+        }
+
+        .header-top-l a {
+            padding-right: 5px;
+            padding-left: 5px;
+            border-right: 1px solid #B3AEAE;
+        }
+
+        .clear-border-right {
+            border: 0 !important;
+        }
+
+        .header-top-r {
+            float: right;
+            /* border: 1px soild green; */
+            margin: 0;
+            padding: 0;
+        }
+
+        .clear-both::after {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 0;
+            clear: both;
+        }
+
+        /*父元素高度塌陷*/
+
+        .header-top-r li {
+            float: left;
+            height: 30px;
+            line-height: 30px;
+            /* border:1px solid green; */
+
+        }
+
+        .header-top-r li a {
+            padding-left: 10px;
+            padding-right: 10px;
+            border-right: 1px solid #B3AEAE;
+        }
+
+        /*header-top 结束 header-middle 开始*/
+        #header-middle {
+            width: 1200px;
+            /* border: 1px solid black; */
+            margin: 0 auto;
+            height: 110px;
+        }
+
+        #header-middle .header-middle-l {
+            width: 250px;
+            height: 110px;
+            line-height: 110px;
+            /* border: 1px solid black; */
+            font-size: 0px;
+            text-align: center;
+            float: left;
+            /*对应form*/
+        }
+
+        #header-middle .header-middle-l img {
+            vertical-align: middle;
+        }
+
+        #header-middle form {
+            float: right;
+            height: 110px;
+            line-height: 110px;
+            /* border: 1px solid blue; */
+            font-size: 0px;
+            /*表格和按钮中间有空隙因为中间有空格*/
+        }
+
+        #header-middle form input {
+            width: 490px;
+            height: 32px;
+            font-size: 12px;
+            border: 2px solid rgb(234, 74, 54);
+            outline: none;
+            /*去除系统默认边框*/
+            vertical-align: middle;
+            /*图片、按钮、文字垂直居中*/
+            border-right: 0px;
+            box-sizing: border-box;
+            /*按钮调整后发现输入框高度对不上，考虑边框宽度*/
+        }
+
+        #header-middle form button {
+            height: 32px;
+            width: 68px;
+            font-size: 12px;
+            vertical-align: middle;
+            border-bottom: 2px solid rgb(234, 74, 54);
+            background-color: rgb(234, 74, 54);
+            color: #FFF;
+            outline: none;
+            cursor: pointer;
+            /*光标悬停样式,为手指*/
+            border: 0;
+            /*button 属性自带黑框需要清除*/
+
+
+        }
+
+        #header-bottom {
+            width: 100%;
+            min-width: 1200px;
+            height: 46px;
+            /* border: 1px solid red; */
+            border-bottom: 2px solid red;
+        }
+
+        #header-bottom ul {
+            width: 1200px;
+            height: 46px;
+            line-height: 46px;
+            padding: 0px;
+            margin: 0px;
+            margin: 0 auto;
+            /* border: 1px solid red */
+        }
+
+        #header-bottom ul li {
+            float: left;
+            list-style-type: none;
+            padding-right: 22px;
+            padding-left: 22px;
+            font-size: 16px;
+        }
+
+        #header-bottom ul li a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        #header-bottom ul li a:hover {
+            color: #e1251b;
+        }
+
+        #header-bottom ul li:first-of-type {
+            background-color: #E1251B;
+            width: 210px;
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: bold;
+
+            text-align: center;
+            padding-left: 0px;
+            padding-right: 0px;
+        }
+
+        /* header结束 main开始 侧边菜单、轮播图、雪碧图 */
+        #main {
+            width: 1200px;
+            margin: 0 auto;
+            /* border: 1px solid black; */
+        }
+
+        .leftmenu {
+            margin: 0px;
+            padding: 0px;
+            list-style-type: none;
+            width: 210px;
+            background-color: rgb(250, 250, 250);
+            /* border-style: solid;
+             border-color: blue; */
+            position: relative;
+            float: left;
+            /*因为所有的submenu都相对于leftmenu对齐，所以不在里设置相对定位*/
+        }
+
+        .leftmenu li {
+            /* border: 1px solid red; */
+            height: 30px;
+            line-height: 30px;
+            font-size: 14px;
+            padding-left: 10px;
+        }
+
+        .leftmenu li a {
+            color: #333;
+            text-decoration: none;
+        }
+
+        .leftmenu li a:hover {
+            color: red;
+        }
+
+
+        .leftmenu div.submenu {
+            /*display：none先使子菜单完全删除，再通过hover单独触发每层子菜单的block*/
+            display: none;
+            /*display:none完全从文档中删除，对布局不会产生影响*/
+            border: 1px solid #ddd;
+            position: absolute;
+            /*脱离文档流，生成块级元素，位置相对容纳块确定*/
+            width: 721px;
+            left: 210px;
+            top: 0px;
+            bottom: 0px;
+            background-color: #F7F7F7;
+            z-index: 2;
+            /*轮播动图遮盖后增加堆叠的层级数*/
+        }
+
+
+        .leftmenu li:hover .submenu {
+            display: block
+        }
+
+        /*leftmenu结束 submenu菜单内容开始 */
+        dl.clearboth,
+        dl.clearboth dt,
+        dl.clearboth dd,
+        ul.clearboth,
+        ul.clearboth li {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+            font-size: 12px;
+        }
+
+        .clearboth::after {
+            content: '';
+            display: block;
+            clear: both;
+            width: 100%;
+            height: 0;
+        }
+
+        #submenu {
+            width: 500px;
+            /* border:1px solid green; */
+        }
+
+        dl.clearboth dt {
+            font-weight: bold;
+            width: 70px;
+            height: 30px;
+            line-height: 30px;
+            text-align: right;
+        }
+
+        dl.clearboth dd {
+            width: 390px;
+        }
+
+        dl.clearboth dt,
+        dl.clearboth dd {
+            /*  border:1px solid yellow; */
+            float: left;
+        }
+
+        dl.clearboth dd ul li {
+            float: left;
+            height: 30px;
+            line-height: 30px;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+        dl dd ul li a {
+            border-left: 1px solid #333;
+            padding-left: 5px;
+            color: #333;
+            font-size: 12px;
+        }
+
+        /*子菜单submenu结束 banner-scroll滚动广告开始*/
+        #banner-scroll {
+            position: relative;
+            /*给图片滚动准备*/
+            overflow: hidden;
+            width: 721px;
+            height: 450px;
+            /* border: 1px solid green; */
+            float: left;
+            /*相对定位给了leftmenu,父元素main高度塌陷*/
+
+
+
+            font-size: 0px;
+            margin: 0 auto;
+
+        }
+
+        #main::after {
+            /*给main清除浮动,让滚动广告上来*/
+            content: '';
+            display: block;
+            clear: both;
+
+        }
+
+        #banner-scroll ul {
+            margin: 0px;
+            padding: 0px;
+            width: 2884px;
+            height: 100%;
+            /* 给父元素加上overflow*/
+            /* border: 1px solid black; */
+            list-style-type: none;
+            position: absolute;
+            /*给图片滚动准备*/
+            top: 0px;
+            left: 0px;
+            padding: 5px
+        }
+
+        #banner-scroll ul li {
+            float: left;
+        }
+
+        #banner-scroll ul li a {
+            display: inline-block;
+            /*使a撑开*/
+        }
+
+        #banner-scroll ul li img {
+            width: 721px;
+        }
+
+        #banner-scroll .arrow-left,
+        #banner-scroll .arrow-right {
+            position: absolute;
+            width: 42px;
+            height: 70px;
+            /* border: 1px solid blue; */
+            background-image: url("img/左右箭头.png");
+        }
+
+        #banner-scroll .arrow-left {
+            top: 50%;
+            margin-top: -35px;
+            left: 5px;
+            background-position: -84px 0;
+            /*雪碧图值从左到右，0——负值，方向是从右到左的*/
+        }
+
+        #banner-scroll .arrow-right {
+            top: 50%;
+            margin-top: -35px;
+            right: 0px;
+            background-position: -126px 0;
+        }
+
+        #banner-scroll .arrow-left:hover {
+            background-position: 0 0;
+        }
+
+        #banner-scroll .arrow-right:hover {
+            background-position: -42px 0;
+        }
+
+        #banner-bottom {
+            position: absolute;
+            width: 100px;
+            height: 10px;
+            /* border: 1px solid red; */
+            bottom: 30px;
+            margin-left: -50px;
+            /*定位垂直居中*/
+            left: 50%;
+        }
+
+        #banner-bottom div {
+            float: left;
+            width: 10px;
+            height: 10px;
+            margin-left: 5px;
+            margin-right: 5px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 50%;
+
+        }
+
+        #banner-bottom div.active {
+            background: #007AFF;
+        }
+
+        /*banner-scroll结束 sidetitle开始*/
+        .sidetitle {
+            margin: 0px;
+            padding: 0px;
+            width: 260px;
+            height: 450px;
+            /* border: 1px solid black; */
+            margin-left: 5px;
+            float: left;
+        }
+
+        .news {
+            width: 260px;
+            height: 176px;
+            line-height: 176px;
+            border: 1px solid #e4e4e4;
+
+        }
+
+        .news h4 {
+            position: relative;
+            /* border: 1px solid red; */
+            padding-left: 10px;
+
+            border-bottom: 1px solid #e4e4e4;
+            padding: 5px 10px;
+            margin: 5px 5px 0;
+            line-height: 22px;
+            overflow: hidden;
+            font-size: 14px;
+        }
+
+        .news h4 span {
+            position: absolute;
+            right: 30px;
+            font-size: 12px;
+        }
+
+        .news a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        .news h4 a:hover {
+            color: #e1251b;
+        }
+
+        .news ul {
+            margin: 0px;
+            padding: 0px;
+            height: 142px;
+            width: 100%;
+            line-height: 142px;
+            /* border: 1px solid red; */
+        }
+
+        .news>ul>li {
+            margin: 0px;
+            padding: 0px;
+            width: 220px;
+            height: 26px;
+            line-height: 26px;
+            font-size: 12px;
+            text-align: center;
+        }
+
+        .news>ul>li:first-of-type {
+            margin-top: 5px;
+        }
+
+        .news>ul>li>span {
+            font-weight: bold;
+        }
+
+        .news>ul>li>a:hover {
+            color: #e1251b;
+        }
+
+        /*新闻结束，到雪碧图*/
+        .sprite {
+            margin-left: 1px;
+            width: 260px;
+            height: 195px;
+
+            border-right: 1px solid #e4e4e4;
+            font-size: 0px;
+        }
+
+        .sprite div {
+            display: inline-block;
+            box-sizing: border-box;
+
+            width: 65px;
+            height: 65px;
+            border-left: 1px solid #e4e4e4;
+            border-bottom: 1px solid #e4e4e4;
+            text-align: center;
+            padding-top: 8px;
+            cursor: pointer;
+        }
+
+        .sprite div span {
+            display: inline-block;
+            width: 25px;
+            height: 25px;
+            /* border: 1px solid red; */
+            background-image: url("img/雪碧图.png")
+        }
+
+        .sprite div strong {
+            display: block;
+            height: 24px;
+            line-height: 24px;
+            font-size: 12px;
+            font-weight: normal;
+            padding-top: 5px;
+        }
+
+        .sprite div:hover strong {
+            color: rgb(202, 31, 44);
+        }
+
+        span.huafei {
+            background-position: 0 -200px;
+        }
+
+        span.jipiao {
+            background-position: 0 -175px;
+        }
+
+        span.jiudian {
+            background-position: 0 -50px;
+        }
+
+        span.youxi {
+            background-position: 0 -275px;
+        }
+
+        span.jiayouka {
+            background-position: 0 -225px;
+        }
+
+        span.huochepiao {
+            background-position: 0 -25px;
+        }
+
+        span.zhongchou {
+            background-position: 0 0;
+        }
+
+        span.licai {
+            background-position: 0 -100px;
+        }
+
+        span.baitiao {
+            background-position: 0 -50px;
+        }
+
+        span.dianyingpiao {
+            background-position: 0 -150px;
+        }
+
+        span.qiyegou {
+            background-position: 0 -250px;
+        }
+
+        span.lipinka {
+            background-position: 0 -75px;
+        }
+
+        /*雪碧图结束，side-ad开始*/
+        .side-ad {
+            width: 100%;
+            height: 75px;
+            margin-top: 2px;
+            margin-left: 2px;
+
+        }
+
+        .side-ad img {
+            width: 100%;
+            height: 75px;
+        }
+
+        /*侧边菜单、轮播图、雪碧图结束，banner-today开始*/
+
+        .banner-to {
+
+            width: 1200px;
+            height: 165px;
+            /* border: 1px solid black; */
+            margin: 0 auto;
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+
+        .recommed {
+            float: left;
+            position: relative;
+            text-align: center;
+            width: 199px;
+            height: 165px;
+            /* border: 1px solid black; */
+            background-color: #5c5251;
+        }
+
+        .recommed img {
+            position: absolute;
+            /* border:1px solid black; */
+            left: 73px;
+            top: 30px;
+        }
+
+        .recommed h3 {
+            width: 200px;
+            height: 30px;
+            position: absolute;
+            left: 0px;
+            top: 100px;
+        }
+
+        .recommed h3 a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .recommed h3 a:hover {
+            color: rgb(202, 31, 44);
+        }
+
+        .banner-to ul {
+
+            width: 1000px;
+            height: 165px;
+            float: left;
+            /* border: 1px solid red; */
+            padding: 0px;
+            margin: 0px;
+            list-style-type: none;
+        }
+
+        .banner-to ul li {
+            width: 250px;
+            font-size: 0px;
+            float: left;
+
+        }
+
+        .banner-to ul li a img {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* .banner-to ul li a:hover img{
+
+        } */
+        /*banner-to 结束  hot开始 */
+        #hot {
+            width: 1200px;
+            height: 438px;
+            /* border: 1px solid black; */
+            margin: 0 auto;
+        }
+
+        #hot .hot-title {
+            width: 312px;
+            height: 78px;
+            /* border: 1px solid black; */
+            margin: 0 auto;
+        }
+
+        #hot .hot-title div {
+            width: 104px;
+            height: 78px;
+            float: left;
+            text-align: center;
+            /* border: 1px solid black; */
+        }
+
+        #hot .hot-title div span {
+            display: inline-block;
+            width: 35px;
+            height: 35px;
+            background-image: url("./img/bg0.png");
+        }
+
+        #hot .hot-title div:first-of-type span {
+            background-position: -35px 0px;
+            /*这里要加上px，光输入值不会生效的*/
+        }
+
+        #hot .hot-title div strong {
+            display: block;
+            width: 64px;
+            height: 28px;
+            line-height: 28px;
+            padding-left: 20px;
+            font-weight: normal;
+        }
+
+        #hot .hot-title div:first-of-type strong {
+            color: #E6008D;
+        }
+
+        #hot .hot-title div:hover strong {
+            color: #90EE90;
+        }
+
+        #hot .hot-content {
+            overflow: hidden;
+            width: 1200px;
+            height: 360px;
+            /* border: 1px solid black; */
+            padding: 10px;
+        }
+
+        #hot .hot-content>div {
+            width: 271px;
+            height: 330px;
+            border: 1px solid #e1251b;
+            float: left;
+            margin-left: 12px;
+            margin-right: 12px;
+            margin-bottom: 10px;
+
+        }
+
+        #hot .hot-content>div>div:first-of-type {
+            width: 230px;
+            height: 210px;
+            text-align: center;
+            margin-left: 20px;
+            margin: 0 12px 10px;
+
+        }
+
+        #hot .hot-content div img {
+            width: 200px;
+            height: 200px;
+            margin-top: 5px;
+        }
+
+        .hot-ti-bg {
+            background-color: #fafafa;
+            width: 269px;
+            height: 95px;
+            margin-top: 22px;
+        }
+
+        #hot .hot-content div span {
+            display: inline-block;
+            height: 50px;
+            line-height: 28px;
+            margin: 0 auto;
+            padding-left: 10px;
+            /* border: 1px solid blue; */
+        }
+
+        #hot .hot-content div span a {
+            font-size: 12px;
+            text-decoration: none;
+            color: #333;
+            /* border: 1px solid red; */
+        }
+
+        #hot .hot-content div span a:hover {
+            color: #90EEAC;
+        }
+
+        #hot .hot-content div p {
+            display: block;
+            font-size: 20px;
+            height: 35px;
+            line-height: 24px;
+            color: #e1251b;
+            margin: 10px auto 0;
+            padding-left: 10px;
+        }
+
+        /*hot内容结束，like内容开始*/
+        #like {
+            width: 1200px;
+            height: 282px;
+            margin: 0 auto;
+            margin-top: 15px;
+            /* border: 1px solid black; */
+        }
+
+        #like .like-title {
+            width: 100%;
+            height: 30px;
+            /* border: 1px solid red; */
+        }
+
+        #like .like-title div:first-of-type {
+            width: 80px;
+            height: 30px;
+            float: left;
+            line-height: 30px;
+            color: #333;
+            font-size: 20px;
+            font-weight: bold;
+            /* border: 1px solid blue; */
+        }
+
+        #like .like-title div:last-child a {
+            width: 70px;
+            height: 30px;
+            line-height: 30px;
+            float: right;
+            background-image: url("img/sprite.png");
+            background-position: 182px -102px;
+            text-decoration: none;
+            font-size: 12px;
+            color: #666;
+            /* border: 1px solid blue; */
+        }
+
+        #like .like-title div:last-child a:hover {
+            color: #90EE90;
+        }
+
+        #like .like-content {
+            display: flex;
+            width: 100%;
+            height: 252px;
+            float: left;
+            border: 1px solid #E4E4E4;
+        }
+
+        #like .like-content div {
+            height: 250px;
+            width: 198px;
+            flex-direction: row;
+            justify-content: content;
+            align-content: stretch;
+            /* border: 1px solid green; */
+
+            text-align: center;
+        }
+
+        #like .like-content div img {
+            transition: all 400ms;
+        }
+
+        #like .like-content div img:hover {
+            opacity: 0.8;
+            transform: scale(1.1);
+
+        }
+
+
+        #like .like-content div p {
+            margin: 0px;
+            width: 142px;
+            height: 31px;
+            overflow: hidden;
+            display: inline-block;
+            padding-left: 28px;
+            padding-right: 28px;
+        }
+
+        #like .like-content div p a {
+            display: inline-block;
+            width: 100%;
+            height: 100%;
+            font-size: 12px;
+            text-decoration: none;
+            line-height: 1.4;
+        }
+
+        #like .like-content div span {
+            display: inline-block;
+            width: 100% height：30px;
+            line-height: 30px;
+            font-size: 20px;
+            color: #df3033;
+            margin-top: 12px;
+            font-weight: bold;
+
+        }
+
+        #like .like-content div:hover a {
+            color: #90EE90;
+        }
+
+        #like .like-content div .like-ti {
+            border-right: 1px solid #E4E4E4;
+            height: 108px;
+            width: 175px;
+        }
+
+        /*like栏目结束，app栏目开始*/
+        #app {
+            width: 1200px;
+            height: 411px;
+            /* border: 1px solid black; */
+            margin: 0 auto;
+            margin-top: 15px;
+        }
+
+        #app .app-title {
+            width: 1200px;
+            height: 48px;
+            /* border: 1px solid black; */
+        }
+
+        #app .app-title h3 {
+            width: 80px;
+            height: 30px;
+            float: left;
+            /* border: 1px solid red; */
+            line-height: 30px;
+            margin-top: 9px;
+            margin-bottom: 9px;
+            color: #C81623;
+        }
+
+        #app .app-title ul,
+        #app .app-title li {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        #app .app-title ul {
+            width: 480px;
+            height: 30px;
+            float: right;
+            /* border: 1px solid red; */
+            line-height: 30px;
+            margin-top: 9px;
+            margin-bottom: 9px;
+            list-style-type: none;
+        }
+
+        #app .app-title ul li {
+            float: left;
+            width: 65px;
+            line-height: 32px;
+            text-align: center;
+        }
+
+        #app .app-title ul li:first-of-type a {
+            color: #E1251B;
+            border-right: 1px solid #E1251B;
+        }
+
+        #app .app-title ul li a {
+            width: 60px;
+            line-height: 17px;
+            display: inline-block;
+            color: #666666;
+            font-size: 12px;
+            text-decoration: none;
+            border-right: 1px solid#B3AEAE;
+        }
+
+        #app .app-title ul li a:hover {
+            color: #90EE90;
+            text-decoration: underline;
+        }
+
+        #app .app-title ul li .app-title-la {
+            border-right: none;
+        }
+
+        /*app-title结束，app-content开始*/
+        #app .app-content {
+            width: 1200px;
+            height: 363px;
+            /* border: 1px solid black; */
+            border-top: 2px solid #C81623;
+        }
+
+        #app .app-content .app-content-1 {
+            width: 211px;
+            height: 364px;
+            float: left;
+        }
+
+        #app .app-content ul,
+        li {
+            margin: 0px;
+            padding: 0px;
+            list-style-type: none;
+        }
+
+        #app .app-content .app-con-list {
+
+            box-sizing: border-box;
+            width: 211px;
+            height: 110px;
+            /* border: 1px solid black; */
+            background: #F7F7F7;
+            padding-top: 15px;
+            padding-bottom: 15px;
+        }
+
+        #app .app-content .app-con-list li {
+            list-style-type: none;
+            font-size: 12px;
+            float: left;
+            width: 40%;
+            margin: 0 10px;
+            border-bottom: 1px solid #e4e4e4;
+            text-align: center;
+            line-height: 26px;
+        }
+
+        #app .app-content .app-con-list li a {
+            text-decoration: none;
+            color: #333333;
+        }
+
+        #app .app-content .app-con-list li a:hover {
+            color: #E1251B;
+        }
+
+        #app .app-content .app-con-pic1 {
+            width: 209px;
+            height: 250px;
+            /* border: 1px solid black; */
+        }
+
+        .app-con-pic1 img {
+            width: 100%;
+            height: 1005;
+        }
+
+        /*app轮播图*/
+        #app .app-content .app-con-scroll {
+            position: relative;
+            width: 329px;
+            height: 360px;
+            /* border: 1px solid blue; */
+            float: left;
+            overflow: hidden;
+            font-size: 0px;
+        }
+
+        #app .app-content .app-con-scroll ul {
+            width: 987px;
+            height: 100%;
+            top: 0px;
+            left: 0px;
+            position: absolute;
+        }
+
+        #app .app-content .app-con-scroll ul li {
+            float: left;
+        }
+
+        #app .app-content .app-con-scroll ul li a {
+            display: inline-block;
+        }
+
+        #app .app-content .app-con-scroll ul img {
+            width: 329px;
+        }
+
+        #app .app-con-scroll .app-arrow-left,
+        #app .app-con-scroll .app-arrow-right {
+            position: absolute;
+            width: 42px;
+            height: 70px;
+            /* border: 1px solid blue; */
+            background-image: url("img/左右箭头.png");
+        }
+
+        .app-arrow-right {
+            top: 50%;
+            margin-top: -35px;
+            right: -2px;
+            background-position: -42px 0px;
+        }
+
+        .app-con-scroll .app-arrow-left {
+            top: 50%;
+            margin-top: -35px;
+            left: 0px;
+            background-position: 0px 0px;
+        }
+
+        #app .app-con-scroll .app-arrow-left:hover {
+            background-position: -84px 0px;
+        }
+
+        #app .app-con-scroll .app-arrow-right:hover {
+            background-position: -126px 0px;
+        }
+
+        #scroll-bottom {
+            position: absolute;
+            width: 75px;
+            height: 10px;
+            /* border: 1px solid red; */
+            bottom: 10px;
+            margin-left: -30px;
+            /*定位垂直居中*/
+            left: 50%;
+        }
+
+        #scroll-bottom div {
+            float: left;
+            width: 8px;
+            height: 8px;
+            margin-left: 5px;
+            margin-right: 5px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 50%;
+        }
+
+        #scroll-bottom div.active {
+            background: #007AFF;
+        }
+
+        /*scroll结束，app-content2--5开始*/
+        #app .app-content-2 {
+
+            height: 360px;
+            width: 219px;
+            float: left;
+            border-right: 1px solid #E4E4E4;
+
+        }
+
+        #app .app-content-3 {
+            height: 360px;
+            width: 219px;
+            float: left;
+            border-right: 1px solid #E4E4E4;
+
+        }
+
+        #app .app-content-4 {
+            height: 360px;
+            width: 219px;
+            float: left;
+            border-left: 1px solid #E4E4E4;
+
+        }
+
+        #app .app-content-2>div {
+            border-bottom: 1px solid #E4E4E4;
+            height: 180px;
+        }
+
+        #app .app-content-3 {
+            border-bottom: 1px solid #E4E4E4;
+        }
+
+        #app .app-content-4>div {
+            border-bottom: 1px solid #E4E4E4;
+            height: 180px;
+
+        }
+
+        #app .app-content-2>div>img {
+            width: 100%;
+            height: 100%;
+            transition: all 400ms;
+
+        }
+
+        #app .app-content-2>div>img:hover {
+            opacity: 0.8;
+        }
+
+        #app .app-content-4>div>img {
+            width: 100%;
+            height: 100%;
+            transition: all 400ms;
+        }
+
+        #app .app-content-4>div>img:hover {
+            opacity: 0.8;
+        }
+
+        /*app结束，brand开始*/
+        #brand-list {
+            width: 1200px;
+            height: 67px;
+            /* border: 1px solid black; */
+            margin: 10px auto;
+        }
+
+        #brand-list ul {
+            box-sizing: border-box;
+            margin: 0px;
+            width: 100%;
+            height: 67px;
+            background: #F7F7F7;
+            padding: 15px 0px;
+            line-height: 67px;
+            text-align: center;
+        }
+
+        #brand-list ul li {
+            float: left;
+            height: 37px;
+            width: 119px;
+            line-height: 37px;
+            border-right: 1px solid #CCCCCC;
+            display: inline;
+        }
+
+        #brand-list ul li a {
+            display: block;
+            height: 100%
+        }
+
+        #brand-list ul li:last-child {
+            border-right: none;
+        }
+
+        /*brand-list结束，footer开始*/
+        .footerside {
+            min-width: 1200px;
+            height: 320px;
+            background: #EAEAEA;
+        }
+
+        #footer {
+            vertical-align: center;
+            width: 1200px;
+            height: 320px;
+            margin: 0 auto;
+            /* border: 1px solid black; */
+
+        }
+
+        #footer .footerlist {
+
+            padding: 20px 20px 20px 40px;
+            width: 1200px;
+            height: 205px;
+            /* border: 1px solid black; */
+            border-bottom: 1px solid #e4e1e1;
+            box-sizing: border-box;
+        }
+
+        .footerlist dl {
+            margin: 0;
+            padding: 0;
+            width: 190px;
+            height: 106px;
+            /* border: 1px solid blue; */
+            float: left;
+        }
+
+        .footerlist dl dd:first-child {
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .footerlist dl dd {
+            margin: 0px;
+            font-size: 12px;
+            line-height: 18px;
+        }
+
+        .copyright {
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+            width: 1200px;
+            height: 116px;
+            text-align: center;
+            /* border: 1px solid black; */
+
+        }
+
+        .copyright ul {
+            padding: 0;
+            margin: 0;
+            text-align: center;
+            width: auto;
+            height: auto;
+        }
+
+        .copyright ul li {
+            display: inline;
+            font-size: 12px;
+            border-right: 1px solid;
+            padding-right: 9px;
+            padding-left: 2px;
+        }
+
+        .copyright ul li:last-child {
+            border: none;
+        }
+
+        .copyright ul li a {
+            text-decoration: none;
+            color: black;
+        }
+
+        .copyright ul li a:hover {
+            color: #E1251B;
+            ;
+        }
+
+        .copyright p {
+            font-size: 12px;
+        }
+        /*copyright结束，固定定位开始*/
+  
+    </style>
+
+</head>
+
+<body>
+    <!--！！！清晰的html,简洁的框架,明确的CSS-->
+    <!-- 头部导航、logo和底部导航-->
+    <div id="header-top">
+        <div class="header clear-both">
+            <ul class="header-top-l">
+                <li>尚品汇欢迎您！</li>
+                <li>请<a href="#">登录</a></li>
+                <li><a href="#" class="clear-border-right">免费注册</a></li>
+            </ul>
+
+            <ul class="header-top-r">
+                <li><a href="#">我的订单</a></li>
+                <li><a href="#">我的购物车</a></li>
+                <li><a href="#">我的商品汇</a></li>
+                <li><a href="#">尚品汇会员</a></li>
+                <li><a href="#">企业采购</a></li>
+                <li><a href="#">关注尚品汇</a></li>
+                <li><a href="#">合作招商</a></li>
+                <li><a href="#" class="clear-border-right">商家后台</a></li>
+            </ul>
+        </div>
+    </div>
+    <div id="header-middle">
+        <div class="header-middle-l">
+            <a href="#">
+                <img src="./img/logo.jpg" alt="logo">
+            </a>
+            <h1>尚品汇</h1>
+        </div>
+        <form action="#" method="POST">
+            <input type="text" name="searchName" />
+            <button type="submit">搜索</button>
+        </form>
+    </div>
+    <div id="header-bottom">
+        <ul>
+            <li>全部商品分类</li>
+            <li>
+                <a href="#">服装城</a>
+            <li>
+                <a href="#">美妆馆</a>
+            </li>
+            <li>
+                <a href="#">尚品汇超市</a>
+            </li>
+            <li>
+                <a href="#">全球购</a>
+            </li>
+            <li>
+                <a href="#">闪购</a>
+            </li>
+            <li>
+                <a href="#">团购</a>
+            </li>
+            <li>
+                <a href="#">有趣</a>
+            </li>
+            <li>
+                <a href="#">秒杀</a>
+            </li>
+
+            </li>
+        </ul>
+    </div>
+    <!--侧边菜单、轮播图、雪碧图-->
+    <div id="main">
+        <ul class="leftmenu">
+            <li>
+                <a href="#">图书、音像、数字商品</a>
+                <div class="submenu">
+                    <dl class="clearboth">
+                        <dt>电子书</dt>
+                        <dd>
+                            <ul class="clearboth">
+                                <li><a href="#">电子书</a></li>
+                                <li><a href="#">婚恋/两性</a></li>
+                                <li><a href="#">文学</a></li>
+                                <li><a href="#">经管</a></li>
+                                <li><a href="#">畅读VIP</a></li>
+                            </ul>
+                        </dd>
+                    </dl>
+                    <dl class="clearboth">
+                        <dt>数字音乐</dt>
+                        <dd>
+                            <ul class="clearboth">
+                                <li><a href="#">通俗流行</a></li>
+                                <li><a href="#">古典音乐</a></li>
+                                <li><a href="#">摇滚说唱</a></li>
+                                <li><a href="#">爵士蓝调</a></li>
+                                <li><a href="#">乡村民谣</a></li>
+                                <li><a href="#">有声读物</a></li>
+                            </ul>
+                        </dd>
+                    </dl>
+                    <dl class="clearboth">
+                        <dt>音像音乐</dt>
+                        <dd>
+                            <ul class="clearboth">
+                                <li><a href="#">音乐</a></li>
+                                <li><a href="#">音像</a></li>
+                                <li><a href="#">影视</a></li>
+                                <li><a href="#">教育</a></li>
+                                <li><a href="#">音像</a></li>
+                                <li><a href="#">游戏</a></li>
+                            </ul>
+                        </dd>
+                    </dl>
+                    <dl class="clearboth">
+                        <dt>文艺</dt>
+                        <dd>
+                            <ul class="clearboth">
+                                <li><a href="#">文艺小说</a></li>
+                                <li><a href="#">文学青春</a></li>
+                                <li><a href="#">文学传记</a></li>
+                                <li><a href="#">艺术</a></li>
+                                <li><a href="#">音像</a></li>
+                                <li><a href="#">游戏</a></li>
+                            </ul>
+                        </dd>
+                    </dl>
+                    <dl class="clearboth">
+                        <dt>人文社科</dt>
+                        <dd>
+                            <ul class="clearboth">
+                                <li><a href="#">历史</a></li>
+                                <li><a href="#">心理学</a></li>
+                                <li><a href="#">文学传记</a></li>
+                                <li><a href="#">政治/军事</a></li>
+                                <li><a href="#">国学/古籍</a></li>
+                                <li><a href="#">哲学/宗教</a></li>
+                                <li><a href="#">社会科学</a></li>
+                            </ul>
+                        </dd>
+                    </dl>
+                    <dl class="clearboth">
+                        <dt>经管励志</dt>
+                        <dd>
+                            <ul class="clearboth">
+                                <li><a href="#">经济</a></li>
+                                <li><a href="#">金融与投资</a></li>
+                                <li><a href="#">管理</a></li>
+                                <li><a href="#">励志与成功</a></li>
+                                <li><a href="#">国学/古籍</a></li>
+                                <li><a href="#">哲学/宗教</a></li>
+                                <li><a href="#">社会科学</a></li>
+                            </ul>
+                        </dd>
+                    </dl>
+                    <dl class="clearboth">
+                        <dt>生活与家庭</dt>
+                        <dd>
+                            <ul class="clearboth">
+                                <li><a href="#">家庭与育儿</a></li>
+                                <li><a href="#">旅游/地图</a></li>
+                                <li><a href="#">烹饪/美食</a></li>
+                                <li><a href="#">励志与成功</a></li>
+                                <li><a href="#">时尚/美妆</a></li>
+                                <li><a href="#">家居</a></li>
+                                <li><a href="#">婚恋与两性</a></li>
+                                <li><a href="#">娱乐/休闲</a></li>
+                                <li><a href="#">健身与保健</a></li>
+                                <li><a href="#">动漫/幽默</a></li>
+                                <li><a href="#">体育/运动</a></li>
+                            </ul>
+                        </dd>
+                    </dl>
+                    <dl class="clearboth">
+                        <dt>科技科普</dt>
+                        <dd>
+                            <ul class="clearboth">
+                                <li><a href="#">家庭与育儿</a></li>
+                                <li><a href="#">IT</a></li>
+                                <li><a href="#">建筑</a></li>
+                                <li><a href="#">管理</a></li>
+                                <li><a href="#">医学</a></li>
+                                <li><a href="#">工业</a></li>
+                                <li><a href="#">技术</a></li>
+                                <li><a href="#">电子/通信</a></li>
+                                <li><a href="#">农林</a></li>
+                                <li><a href="#">科学与自然</a></li>
+                            </ul>
+                        </dd>
+                    </dl>
+                </div>
+
+            </li>
+            <li>
+                <a href="#">家用电器</a>
+                <div class="submenu">
+                    <dl class="clearboth">
+                        <dt>电子书</dt>
+                        <dd>
+                            <ul class="clearboth">
+                                <li><a href="#">电子书</a></li>
+                                <li><a href="#">婚恋/两性</a></li>
+                                <li><a href="#">文学</a></li>
+                                <li><a href="#">经管</a></li>
+                                <li><a href="#">畅读VIP</a></li>
+                            </ul>
+                        </dd>
+                    </dl>
+                    <dl class="clearboth">
+                        <dt>数字音乐</dt>
+                        <dd>
+                            <ul class="clearboth">
+                                <li><a href="#">通俗流行</a></li>
+                                <li><a href="#">古典音乐</a></li>
+                                <li><a href="#">摇滚说唱</a></li>
+                                <li><a href="#">爵士蓝调</a></li>
+                                <li><a href="#">乡村民谣</a></li>
+                                <li><a href="#">有声读物</a></li>
+                            </ul>
+                        </dd>
+                    </dl>
+                    <dl class="clearboth">
+                        <dt>音像音乐</dt>
+                        <dd>
+                            <ul class="clearboth">
+                                <li><a href="#">音乐</a></li>
+                                <li><a href="#">音像</a></li>
+                                <li><a href="#">影视</a></li>
+                                <li><a href="#">教育</a></li>
+                                <li><a href="#">音像</a></li>
+                                <li><a href="#">游戏</a></li>
+                            </ul>
+                        </dd>
+                    </dl>
+                    <dl class="clearboth">
+                        <dt>文艺</dt>
+                        <dd>
+                            <ul class="clearboth">
+                                <li><a href="#">文艺小说</a></li>
+                                <li><a href="#">文学青春</a></li>
+                                <li><a href="#">文学传记</a></li>
+                                <li><a href="#">艺术</a></li>
+                                <li><a href="#">音像</a></li>
+                                <li><a href="#">游戏</a></li>
+                            </ul>
+                        </dd>
+                    </dl>
+                    <dl class="clearboth">
+                        <dt>人文社科</dt>
+                        <dd>
+                            <ul class="clearboth">
+                                <li><a href="#">历史</a></li>
+                                <li><a href="#">心理学</a></li>
+                                <li><a href="#">文学传记</a></li>
+                                <li><a href="#">政治/军事</a></li>
+                                <li><a href="#">国学/古籍</a></li>
+                                <li><a href="#">哲学/宗教</a></li>
+                                <li><a href="#">社会科学</a></li>
+                            </ul>
+                        </dd>
+                    </dl>
+                    <dl class="clearboth">
+                        <dt>经管励志</dt>
+                        <dd>
+                            <ul class="clearboth">
+                                <li><a href="#">经济</a></li>
+                                <li><a href="#">金融与投资</a></li>
+                                <li><a href="#">管理</a></li>
+                                <li><a href="#">励志与成功</a></li>
+                                <li><a href="#">国学/古籍</a></li>
+                                <li><a href="#">哲学/宗教</a></li>
+                                <li><a href="#">社会科学</a></li>
+                            </ul>
+                        </dd>
+                    </dl>
+                    <dl class="clearboth">
+                        <dt>生活与家庭</dt>
+                        <dd>
+                            <ul class="clearboth">
+                                <li><a href="#">家庭与育儿</a></li>
+                                <li><a href="#">旅游/地图</a></li>
+                                <li><a href="#">烹饪/美食</a></li>
+                                <li><a href="#">励志与成功</a></li>
+                                <li><a href="#">时尚/美妆</a></li>
+                                <li><a href="#">家居</a></li>
+                                <li><a href="#">婚恋与两性</a></li>
+                                <li><a href="#">娱乐/休闲</a></li>
+                                <li><a href="#">健身与保健</a></li>
+                                <li><a href="#">动漫/幽默</a></li>
+                                <li><a href="#">体育/运动</a></li>
+                            </ul>
+                        </dd>
+                    </dl>
+                    <dl class="clearboth">
+                        <dt>科技科普</dt>
+                        <dd>
+                            <ul class="clearboth">
+                                <li><a href="#">家庭与育儿</a></li>
+                                <li><a href="#">IT</a></li>
+                                <li><a href="#">建筑</a></li>
+                                <li><a href="#">管理</a></li>
+                                <li><a href="#">医学</a></li>
+                                <li><a href="#">工业</a></li>
+                                <li><a href="#">技术</a></li>
+                                <li><a href="#">电子/通信</a></li>
+                                <li><a href="#">农林</a></li>
+                                <li><a href="#">科学与自然</a></li>
+                            </ul>
+                        </dd>
+                    </dl>
+                </div>
+            </li>
+            <li>
+                <a href="#">手机、数码、充值</a>
+                <div class="submenu">
+                    <dl class="clearboth">
+                        <dt>电子书</dt>
+                        <dd>
+                            <ul class="clearboth">
+                                <li><a href="#">电子书</a></li>
+                                <li><a href="#">婚恋/两性</a></li>
+                                <li><a href="#">文学</a></li>
+                                <li><a href="#">经管</a></li>
+                                <li><a href="#">畅读VIP</a></li>
+                            </ul>
+                        </dd>
+                    </dl>
+                    <dl class="clearboth">
+                        <dt>数字音乐</dt>
+                        <dd>
+                            <ul class="clearboth">
+                                <li><a href="#">通俗流行</a></li>
+                                <li><a href="#">古典音乐</a></li>
+                                <li><a href="#">摇滚说唱</a></li>
+                                <li><a href="#">爵士蓝调</a></li>
+                                <li><a href="#">乡村民谣</a></li>
+                                <li><a href="#">有声读物</a></li>
+                            </ul>
+                        </dd>
+                    </dl>
+                    <dl class="clearboth">
+                        <dt>音像音乐</dt>
+                        <dd>
+                            <ul class="clearboth">
+                                <li><a href="#">音乐</a></li>
+                                <li><a href="#">音像</a></li>
+                                <li><a href="#">影视</a></li>
+                                <li><a href="#">教育</a></li>
+                                <li><a href="#">音像</a></li>
+                                <li><a href="#">游戏</a></li>
+                            </ul>
+                        </dd>
+                    </dl>
+                    <dl class="clearboth">
+                        <dt>文艺</dt>
+                        <dd>
+                            <ul class="clearboth">
+                                <li><a href="#">文艺小说</a></li>
+                                <li><a href="#">文学青春</a></li>
+                                <li><a href="#">文学传记</a></li>
+                                <li><a href="#">艺术</a></li>
+                                <li><a href="#">音像</a></li>
+                                <li><a href="#">游戏</a></li>
+                            </ul>
+                        </dd>
+                    </dl>
+                    <dl class="clearboth">
+                        <dt>人文社科</dt>
+                        <dd>
+                            <ul class="clearboth">
+                                <li><a href="#">历史</a></li>
+                                <li><a href="#">心理学</a></li>
+                                <li><a href="#">文学传记</a></li>
+                                <li><a href="#">政治/军事</a></li>
+                                <li><a href="#">国学/古籍</a></li>
+                                <li><a href="#">哲学/宗教</a></li>
+                                <li><a href="#">社会科学</a></li>
+                            </ul>
+                        </dd>
+                    </dl>
+                    <dl class="clearboth">
+                        <dt>经管励志</dt>
+                        <dd>
+                            <ul class="clearboth">
+                                <li><a href="#">经济</a></li>
+                                <li><a href="#">金融与投资</a></li>
+                                <li><a href="#">管理</a></li>
+                                <li><a href="#">励志与成功</a></li>
+                                <li><a href="#">国学/古籍</a></li>
+                                <li><a href="#">哲学/宗教</a></li>
+                                <li><a href="#">社会科学</a></li>
+                            </ul>
+                        </dd>
+                    </dl>
+                    <dl class="clearboth">
+                        <dt>生活与家庭</dt>
+                        <dd>
+                            <ul class="clearboth">
+                                <li><a href="#">家庭与育儿</a></li>
+                                <li><a href="#">旅游/地图</a></li>
+                                <li><a href="#">烹饪/美食</a></li>
+                                <li><a href="#">励志与成功</a></li>
+                                <li><a href="#">时尚/美妆</a></li>
+                                <li><a href="#">家居</a></li>
+                                <li><a href="#">婚恋与两性</a></li>
+                                <li><a href="#">娱乐/休闲</a></li>
+                                <li><a href="#">健身与保健</a></li>
+                                <li><a href="#">动漫/幽默</a></li>
+                                <li><a href="#">体育/运动</a></li>
+                            </ul>
+                        </dd>
+                    </dl>
+                    <dl class="clearboth">
+                        <dt>科技科普</dt>
+                        <dd>
+                            <ul class="clearboth">
+                                <li><a href="#">家庭与育儿</a></li>
+                                <li><a href="#">IT</a></li>
+                                <li><a href="#">建筑</a></li>
+                                <li><a href="#">管理</a></li>
+                                <li><a href="#">医学</a></li>
+                                <li><a href="#">工业</a></li>
+                                <li><a href="#">技术</a></li>
+                                <li><a href="#">电子/通信</a></li>
+                                <li><a href="#">农林</a></li>
+                                <li><a href="#">科学与自然</a></li>
+                            </ul>
+                        </dd>
+                    </dl>
+                </div>
+            </li>
+            <li>
+                <a href="#">电脑、办公</a>
+                <div class="submenu">
+                    <dl class="clearboth">
+                        <dt>电子书</dt>
+                        <dd>
+                            <ul class="clearboth">
+                                <li><a href="#">电子书</a></li>
+                                <li><a href="#">婚恋/两性</a></li>
+                                <li><a href="#">文学</a></li>
+                                <li><a href="#">经管</a></li>
+                                <li><a href="#">畅读VIP</a></li>
+                            </ul>
+                        </dd>
+                    </dl>
+                    <dl class="clearboth">
+                        <dt>数字音乐</dt>
+                        <dd>
+                            <ul class="clearboth">
+                                <li><a href="#">通俗流行</a></li>
+                                <li><a href="#">古典音乐</a></li>
+                                <li><a href="#">摇滚说唱</a></li>
+                                <li><a href="#">爵士蓝调</a></li>
+                                <li><a href="#">乡村民谣</a></li>
+                                <li><a href="#">有声读物</a></li>
+                            </ul>
+                        </dd>
+                    </dl>
+                    <dl class="clearboth">
+                        <dt>音像音乐</dt>
+                        <dd>
+                            <ul class="clearboth">
+                                <li><a href="#">音乐</a></li>
+                                <li><a href="#">音像</a></li>
+                                <li><a href="#">影视</a></li>
+                                <li><a href="#">教育</a></li>
+                                <li><a href="#">音像</a></li>
+                                <li><a href="#">游戏</a></li>
+                            </ul>
+                        </dd>
+                    </dl>
+                    <dl class="clearboth">
+                        <dt>文艺</dt>
+                        <dd>
+                            <ul class="clearboth">
+                                <li><a href="#">文艺小说</a></li>
+                                <li><a href="#">文学青春</a></li>
+                                <li><a href="#">文学传记</a></li>
+                                <li><a href="#">艺术</a></li>
+                                <li><a href="#">音像</a></li>
+                                <li><a href="#">游戏</a></li>
+                            </ul>
+                        </dd>
+                    </dl>
+                    <dl class="clearboth">
+                        <dt>人文社科</dt>
+                        <dd>
+                            <ul class="clearboth">
+                                <li><a href="#">历史</a></li>
+                                <li><a href="#">心理学</a></li>
+                                <li><a href="#">文学传记</a></li>
+                                <li><a href="#">政治/军事</a></li>
+                                <li><a href="#">国学/古籍</a></li>
+                                <li><a href="#">哲学/宗教</a></li>
+                                <li><a href="#">社会科学</a></li>
+                            </ul>
+                        </dd>
+                    </dl>
+                    <dl class="clearboth">
+                        <dt>经管励志</dt>
+                        <dd>
+                            <ul class="clearboth">
+                                <li><a href="#">经济</a></li>
+                                <li><a href="#">金融与投资</a></li>
+                                <li><a href="#">管理</a></li>
+                                <li><a href="#">励志与成功</a></li>
+                                <li><a href="#">国学/古籍</a></li>
+                                <li><a href="#">哲学/宗教</a></li>
+                                <li><a href="#">社会科学</a></li>
+                            </ul>
+                        </dd>
+                    </dl>
+                    <dl class="clearboth">
+                        <dt>生活与家庭</dt>
+                        <dd>
+                            <ul class="clearboth">
+                                <li><a href="#">家庭与育儿</a></li>
+                                <li><a href="#">旅游/地图</a></li>
+                                <li><a href="#">烹饪/美食</a></li>
+                                <li><a href="#">励志与成功</a></li>
+                                <li><a href="#">时尚/美妆</a></li>
+                                <li><a href="#">家居</a></li>
+                                <li><a href="#">婚恋与两性</a></li>
+                                <li><a href="#">娱乐/休闲</a></li>
+                                <li><a href="#">健身与保健</a></li>
+                                <li><a href="#">动漫/幽默</a></li>
+                                <li><a href="#">体育/运动</a></li>
+                            </ul>
+                        </dd>
+                    </dl>
+                    <dl class="clearboth">
+                        <dt>科技科普</dt>
+                        <dd>
+                            <ul class="clearboth">
+                                <li><a href="#">家庭与育儿</a></li>
+                                <li><a href="#">IT</a></li>
+                                <li><a href="#">建筑</a></li>
+                                <li><a href="#">管理</a></li>
+                                <li><a href="#">医学</a></li>
+                                <li><a href="#">工业</a></li>
+                                <li><a href="#">技术</a></li>
+                                <li><a href="#">电子/通信</a></li>
+                                <li><a href="#">农林</a></li>
+                                <li><a href="#">科学与自然</a></li>
+                            </ul>
+                        </dd>
+                    </dl>
+                </div>
+            </li>
+            <li>
+                <a href="#">家居、家具、家装、厨具</a>
+                <div class="submenu">
+                    <dl class="clearboth">
+                        <dt>电子书</dt>
+                        <dd>
+                            <ul class="clearboth">
+                                <li><a href="#">电子书</a></li>
+                                <li><a href="#">婚恋/两性</a></li>
+                                <li><a href="#">文学</a></li>
+                                <li><a href="#">经管</a></li>
+                                <li><a href="#">畅读VIP</a></li>
+                            </ul>
+                        </dd>
+                    </dl>
+                    <dl class="clearboth">
+                        <dt>数字音乐</dt>
+                        <dd>
+                            <ul class="clearboth">
+                                <li><a href="#">通俗流行</a></li>
+                                <li><a href="#">古典音乐</a></li>
+                                <li><a href="#">摇滚说唱</a></li>
+                                <li><a href="#">爵士蓝调</a></li>
+                                <li><a href="#">乡村民谣</a></li>
+                                <li><a href="#">有声读物</a></li>
+                            </ul>
+                        </dd>
+                    </dl>
+                    <dl class="clearboth">
+                        <dt>音像音乐</dt>
+                        <dd>
+                            <ul class="clearboth">
+                                <li><a href="#">音乐</a></li>
+                                <li><a href="#">音像</a></li>
+                                <li><a href="#">影视</a></li>
+                                <li><a href="#">教育</a></li>
+                                <li><a href="#">音像</a></li>
+                                <li><a href="#">游戏</a></li>
+                            </ul>
+                        </dd>
+                    </dl>
+                    <dl class="clearboth">
+                        <dt>文艺</dt>
+                        <dd>
+                            <ul class="clearboth">
+                                <li><a href="#">文艺小说</a></li>
+                                <li><a href="#">文学青春</a></li>
+                                <li><a href="#">文学传记</a></li>
+                                <li><a href="#">艺术</a></li>
+                                <li><a href="#">音像</a></li>
+                                <li><a href="#">游戏</a></li>
+                            </ul>
+                        </dd>
+                    </dl>
+                    <dl class="clearboth">
+                        <dt>人文社科</dt>
+                        <dd>
+                            <ul class="clearboth">
+                                <li><a href="#">历史</a></li>
+                                <li><a href="#">心理学</a></li>
+                                <li><a href="#">文学传记</a></li>
+                                <li><a href="#">政治/军事</a></li>
+                                <li><a href="#">国学/古籍</a></li>
+                                <li><a href="#">哲学/宗教</a></li>
+                                <li><a href="#">社会科学</a></li>
+                            </ul>
+                        </dd>
+                    </dl>
+                    <dl class="clearboth">
+                        <dt>经管励志</dt>
+                        <dd>
+                            <ul class="clearboth">
+                                <li><a href="#">经济</a></li>
+                                <li><a href="#">金融与投资</a></li>
+                                <li><a href="#">管理</a></li>
+                                <li><a href="#">励志与成功</a></li>
+                                <li><a href="#">国学/古籍</a></li>
+                                <li><a href="#">哲学/宗教</a></li>
+                                <li><a href="#">社会科学</a></li>
+                            </ul>
+                        </dd>
+                    </dl>
+                    <dl class="clearboth">
+                        <dt>生活与家庭</dt>
+                        <dd>
+                            <ul class="clearboth">
+                                <li><a href="#">家庭与育儿</a></li>
+                                <li><a href="#">旅游/地图</a></li>
+                                <li><a href="#">烹饪/美食</a></li>
+                                <li><a href="#">励志与成功</a></li>
+                                <li><a href="#">时尚/美妆</a></li>
+                                <li><a href="#">家居</a></li>
+                                <li><a href="#">婚恋与两性</a></li>
+                                <li><a href="#">娱乐/休闲</a></li>
+                                <li><a href="#">健身与保健</a></li>
+                                <li><a href="#">动漫/幽默</a></li>
+                                <li><a href="#">体育/运动</a></li>
+                            </ul>
+                        </dd>
+                    </dl>
+                    <dl class="clearboth">
+                        <dt>科技科普</dt>
+                        <dd>
+                            <ul class="clearboth">
+                                <li><a href="#">家庭与育儿</a></li>
+                                <li><a href="#">IT</a></li>
+                                <li><a href="#">建筑</a></li>
+                                <li><a href="#">管理</a></li>
+                                <li><a href="#">医学</a></li>
+                                <li><a href="#">工业</a></li>
+                                <li><a href="#">技术</a></li>
+                                <li><a href="#">电子/通信</a></li>
+                                <li><a href="#">农林</a></li>
+                                <li><a href="#">科学与自然</a></li>
+                            </ul>
+                        </dd>
+                    </dl>
+                </div>
+            </li>
+            <li>
+                <a href="#">服饰内衣</a>
+                <div class="submenu">6</div>
+            </li>
+            <li>
+                <a href="#">个护化妆</a>
+                <div class="submenu">7</div>
+            </li>
+            <li>
+                <a href="#">运动健康</a>
+                <div class="submenu">8</div>
+            </li>
+            <li>
+                <a href="#">汽车用品</a>
+                <div class="submenu">9</div>
+            </li>
+            <li>
+                <a href="#">彩票、旅行</a>
+                <div class="submenu">10</div>
+            </li>
+            <li>
+                <a href="#">理财、众筹</a>
+                <div class="submenu">11</div>
+            </li>
+            <li>
+                <a href="#">母婴、玩具</a>
+                <div class="submenu">12</div>
+            </li>
+            <li>
+                <a href="#">箱包</a>
+                <div class="submenu">13</div>
+            </li>
+            <li>
+                <a href="#">运动户外</a>
+                <div class="submenu">14</div>
+            </li>
+            <li>
+                <a href="#">箱包</a>
+                <div class="submenu">15</div>
+            </li>
+        </ul>
+
+        <div id="banner-scroll">
+            <ul>
+                <li>
+                    <a href="#">
+                        <img src="./img/图1.jpg">
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="./img/图2.jpg">
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="./img/图3.jpg">
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="./img/图4.jpg">
+                    </a>
+                </li>
+            </ul>
+            <div class="arrow-left"></div> <!-- 箭头arrow-->
+            <div class="arrow-right"></div>
+            <div id="banner-bottom">
+                <div class="active"></div>
+                <div></div>
+                <div></div>
+                <div></div>
+
+            </div>
+        </div>
+        <!-- banner-scroll结束 sidetitle开始 -->
+
+        <div class="sidetitle">
+            <div class="news">
+                <h4><a href="#">尚品汇快报</a>
+                    <span><a href="#">更多&nbsp;&rsaquo;</a></span>
+                </h4>
+
+                <ul>
+                    <li><span>[特惠]</span>
+                        <a href="#">备战开学季&nbsp;全民半价购数码</a>
+                    </li>
+                    <li><span>[公告]</span>
+                        <a href="#">备战开学季&nbsp;全民半价购数码</a>
+                    </li>
+                    <li><span>[特惠]</span>
+                        <a href="#">备战开学季&nbsp;全民半价购数码</a>
+                    </li>
+                    <li><span>[公告]</span>
+                        <a href="#">备战开学季&nbsp;全民半价购数码</a>
+                    </li>
+                    <li><span>[特惠]</span>
+                        <a href="#">备战开学季&nbsp;全民半价购数码</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="sprite">
+                <div>
+                    <span class="huafei"></span>
+                    <strong>话费</strong>
+                </div>
+                <div>
+                    <span class="jipiao"></span>
+                    <strong>机票</strong>
+                </div>
+                <div>
+                    <span class="jiudian"></span>
+                    <strong>酒店</strong>
+                </div>
+                <div>
+                    <span class="youxi"></span>
+                    <strong>游戏</strong>
+                </div>
+                <div>
+                    <span class="jiayouka"></span>
+                    <strong>加油卡</strong>
+                </div>
+                <div>
+                    <span class="huochepiao"></span>
+                    <strong>火车票</strong>
+                </div>
+                <div>
+                    <span class="zhongchou"></span>
+                    <strong>众筹</strong>
+                </div>
+                <div>
+                    <span class="licai"></span>
+                    <strong>理财</strong>
+                </div>
+                <div>
+                    <span class="baitiao"></span>
+                    <strong>白条</strong>
+                </div>
+                <div>
+                    <span class="dianyingpiao"></span>
+                    <strong>电影票</strong>
+                </div>
+                <div>
+                    <span class="qiyegou"></span>
+                    <strong>彩票</strong>
+                </div>
+                <div>
+                    <span class="lipinka"></span>
+                    <strong>礼品卡</strong>
+                </div>
+
+            </div>
+            <div class="side-ad">
+                <img src="./img/宋仲基广告.png">
+            </div>
+        </div>
+
+    </div>
+    <div class="banner-to">
+        <div class="recommed">
+            <img src="./img/clock.png">
+            <h3> <a href="#">今日推荐</a></h3>
+        </div>
+        <ul>
+            <li>
+                <a href="#"><img src="./img/today01.png"></a>
+            </li>
+            <li>
+                <a href="#"><img src="./img/today02.png"></a>
+            </li>
+            <li>
+                <a href="#"><img src="./img/today03.png"></a>
+            </li>
+            <li>
+                <a href="#"><img src="./img/today04.png" style="height: 164.31px;"></a>
+            </li>
+        </ul>
+    </div>
+    <div id="hot">
+        <div class="hot-title">
+            <div>
+                <span class="huo"><a href="#"></a></span>
+                <strong>热卖排行</strong>
+            </div>
+            <div>
+
+                <span class="huo"><a href="#"></a></span>
+                <strong>特价排行</strong>
+            </div>
+            <div>
+                <span class="huo"><a href="#"></a></span>
+                <strong>新品排行</strong>
+            </div>
+        </div>
+        <div class="hot-content">
+            <div>
+                <div>
+                    <img src="./img/1.jpg">
+                </div>
+                <div class="hot-ti-bg">
+                    <span><a href="#">【官网价直降1100】Apple iPhone 8 Plus 256GB 银色 移动联通电信4G手机</a></span>
+                    <p>定金：¥100.00</p>
+                </div>
+
+            </div>
+            <div>
+                <div>
+                    <img src="./img/1.jpg">
+                </div>
+                <div class="hot-ti-bg">
+                    <span><a href="#">【官网价直降1100】Apple iPhone 8 Plus 256GB 银色 移动联通电信4G手机</a></span>
+                    <p>定金：¥100.00</p>
+                </div>
+            </div>
+            <div>
+                <div>
+                    <img src="./img/1.jpg">
+                </div>
+                <div class="hot-ti-bg">
+                    <span><a href="#">【官网价直降1100】Apple iPhone 8 Plus 256GB 银色 移动联通电信4G手机</a></span>
+                    <p>定金：¥100.00</p>
+                </div>
+            </div>
+            <div>
+                <div>
+                    <img src="./img/1.jpg">
+                </div>
+                <div class="hot-ti-bg">
+                    <span><a href="#">【官网价直降1100】Apple iPhone 8 Plus 256GB 银色 移动联通电信4G手机</a></span>
+                    <p>定金：¥100.00</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="like">
+        <div class="like-title">
+            <div>猜你喜欢</div>
+            <div><a href="#">换一换</a></div>
+        </div>
+        <div class="like-content">
+            <div>
+                <img src="./img/like3.png">
+                <div class="like-ti">
+                    <p class="like-title">
+                        <a href="#">阳光美包新款单肩包女包时尚子母包四件套女</a>
+                    </p>
+                    <span>¥116.00</span>
+                </div>
+            </div>
+            <div>
+                <img src="./img/like2.png">
+                <div class="like-ti">
+                    <p class="like-title">
+                        <a href="#">阳光美包新款单肩包女包时尚子母包四件套女</a>
+                    </p>
+                    <span>¥116.00</span>
+                </div>
+            </div>
+            <div>
+                <img src="./img/like1.png">
+                <div class="like-ti">
+                    <p class="like-title">
+                        <a href="#">阳光美包新款单肩包女包时尚子母包四件套女</a>
+                    </p>
+                    <span>¥116.00</span>
+                </div>
+            </div>
+            <div>
+                <img src="./img/like3.png">
+                <div class="like-ti">
+                    <p class="like-title">
+                        <a href="#">阳光美包新款单肩包女包时尚子母包四件套女</a>
+                    </p>
+                    <span>¥116.00</span>
+                </div>
+            </div>
+            <div>
+                <img src="./img/like2.png">
+                <div class="like-ti">
+                    <p class="like-title">
+                        <a href="#">阳光美包新款单肩包女包时尚子母包四件套女</a>
+                    </p>
+                    <span>¥116.00</span>
+                </div>
+            </div>
+            <div>
+                <img src="./img/like1.png">
+                <div class="like-ti">
+                    <p class="like-title">
+                        <a href="#">阳光美包新款单肩包女包时尚子母包四件套女</a>
+                    </p>
+                    <span>¥116.00</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="app">
+        <div class="app-title">
+            <h3>家用电器</h3>
+            <ul>
+                <li><a href="#">热门</a></li>
+                <li><a href="#">大家电</a></li>
+                <li><a href="#">生活电器</a></li>
+                <li><a href="#">厨房电器</a></li>
+                <li><a href="#">应季电器</a></li>
+                <li><a href="#">空气/净水</a></li>
+                <li><a href="#" class="app-title-la">高端电器</a></li>
+            </ul>
+        </div>
+        <div class="app-content">
+            <div class="app-content-1">
+                <ul class="app-con-list">
+                    <li><a href="#">节能补贴</a></li>
+                    <li><a href="#">>4K电视</a></li>
+                    <li><a href="#">空气净化器</a></li>
+                    <li><a href="#">IH电饭煲</a></li>
+                    <li><a href="#">滚筒洗衣机</a></li>
+                    <li><a href="#">电热水器</a></li>
+                </ul>
+                <div class="app-con-pic1">
+                    <img src="./img/floor-1-1.png" alt="">
+                </div>
+            </div>
+            <div class="app-con-scroll">
+                <ul>
+                    <li>
+                        <a href="#">
+                            <img src="./img/app1.png">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="./img/app2.png">
+                        </a>
+                    </li>
+
+
+                    <li>
+                        <a href="#">
+                            <img src="./img/app3.png">
+                        </a>
+                    </li>
+                </ul>
+                <div class="app-arrow-left"></div>
+                <div class="app-arrow-right"></div>
+                <div id="scroll-bottom">
+                    <div class="active"></div>
+                    <div></div>
+                    <div></div>
+                </div>
+
+            </div>
+            <div class="app-content-2">
+                <div><img src="./img/floor-1-2.png"></div>
+                <div><img src="./img/floor-1-3.png"></div>
+            </div>
+            <div class="app-content-3">
+                <img src="./img/floor-1-4.png">
+            </div>
+            <div class="app-content-4">
+                <div><img src="./img/floor-1-5.png"></div>
+                <div><img src="./img/floor-1-6.png"></div>
+            </div>
+        </div>
+    </div>
+    <div id="app">
+        <div class="app-title">
+            <h3>家用电器</h3>
+            <ul>
+                <li><a href="#">热门</a></li>
+                <li><a href="#">大家电</a></li>
+                <li><a href="#">生活电器</a></li>
+                <li><a href="#">厨房电器</a></li>
+                <li><a href="#">应季电器</a></li>
+                <li><a href="#">空气/净水</a></li>
+                <li><a href="#" class="app-title-la">高端电器</a></li>
+            </ul>
+        </div>
+        <div class="app-content">
+            <div class="app-content-1">
+                <ul class="app-con-list">
+                    <li><a href="#">节能补贴</a></li>
+                    <li><a href="#">>4K电视</a></li>
+                    <li><a href="#">空气净化器</a></li>
+                    <li><a href="#">IH电饭煲</a></li>
+                    <li><a href="#">滚筒洗衣机</a></li>
+                    <li><a href="#">电热水器</a></li>
+                </ul>
+                <div class="app-con-pic1">
+                    <img src="./img/floor-1-1.png" alt="">
+                </div>
+            </div>
+            <div class="app-con-scroll">
+                <ul>
+                    <li>
+                        <a href="#">
+                            <img src="./img/app1.png">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="./img/app2.png">
+                        </a>
+                    </li>
+
+
+                    <li>
+                        <a href="#">
+                            <img src="./img/app3.png">
+                        </a>
+                    </li>
+                </ul>
+                <div class="app-arrow-left"></div>
+                <div class="app-arrow-right"></div>
+                <div id="scroll-bottom">
+                    <div class="active"></div>
+                    <div></div>
+                    <div></div>
+                </div>
+
+            </div>
+            <div class="app-content-2">
+                <div><img src="./img/floor-1-2.png"></div>
+                <div><img src="./img/floor-1-3.png"></div>
+            </div>
+            <div class="app-content-3">
+                <img src="./img/floor-1-4.png">
+            </div>
+            <div class="app-content-4">
+                <div><img src="./img/floor-1-5.png"></div>
+                <div><img src="./img/floor-1-6.png"></div>
+            </div>
+        </div>
+    </div>
+    <div id="brand-list">
+        <ul>
+            <li>
+                <a href="#">
+                    <img src="./img/b1.png">
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="./img/b2.png">
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="./img/b3.png">
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="./img/b4.png">
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="./img/b5.png">
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="./img/b6.png">
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="./img/b7.png">
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="./img/b8.png">
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="./img/b9.png">
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="./img/b10.png">
+                </a>
+            </li>
+
+        </ul>
+    </div>
+    <div class="footerside">
+        <div id="footer">
+            <div class="footerlist">
+                <dl>
+                    <dd>购物流程</dd>
+                    <dd>购物指南</dd>
+                    <dd>会员介绍</dd>
+                    <dd>生活旅行/团购</dd>
+                    <dd>常见问题</dd>
+                    <dd>购物指南</dd>
+
+                </dl>
+                <dl>
+                    <dd>配送方式</dd>
+                    <dd>上门自提</dd>
+                    <dd>211限时达</dd>
+                    <dd>配送服务查询</dd>
+                    <dd>配送费收取标准</dd>
+                    <dd>海外配送</dd>
+                </dl>
+                <dl>
+                    <dd>支付方式</dd>
+                    <dd>货到付款</dd>
+                    <dd>在线支付</dd>
+                    <dd>分期付款</dd>
+                    <dd>邮局汇款</dd>
+                    <dd>公司转账</dd>
+                </dl>
+                <dl>
+                    <dd>售后服务</dd>
+                    <dd>售后政策</dd>
+                    <dd>价格保护</dd>
+                    <dd>退款说明</dd>
+                    <dd>返修/退换货</dd>
+                    <dd>取消订单</dd>
+                </dl>
+                <dl>
+                    <dd>特色服务</dd>
+                    <dd>夺宝岛</dd>
+                    <dd>DIY装机</dd>
+                    <dd>延保服务</dd>
+                    <dd>尚品汇E卡</dd>
+                    <dd>尚品汇通信</dd>
+                </dl>
+                <dl>
+                    <dd>帮助中心</dd>
+                    <dd><img src="./img/wx_cz.jpg"></dd>
+                </dl>
+            </div>
+            <div class="copyright">
+                <ul>
+                    <li><a href="#">关于我们</a></li>
+                    <li><a href="#">联系我们</a></li>
+                    <li><a href="#">关于我们</a></li>
+                    <li><a href="#">商家入驻</a></li>
+                    <li><a href="#">营销中心</a></li>
+                    <li><a href="#">友情链接</a></li>
+                    <li><a href="#">关于我们</a></li>
+                    <li><a href="#">友情链接</a></li>
+                    <li><a href="#">关于我们</a></li>
+                    <li><a href="#">营销中心</a></li>
+                    <li><a href="#">友情链接</a></li>
+                    <li><a href="#">关于我们</a></li>
+                </ul>
+                <p>地址：北京市昌平区宏福科技园综合楼6层</p>
+                <p>京ICP备19006430号</p>
+            </div>
+        </div>
+    </div>
+    
+</body>
+
+</html>
